@@ -1,0 +1,24 @@
+# action.yml
+name: 'Apigee Action'
+description: 'Use Apigeetool command to deploy your asset to Apigee Organization'
+inputs:
+  APIGEE_USERNAME:  # id of input
+    description: 'Apigee User Name'
+    required: true
+    default: 'none'
+  APIGEE_PASSWORD:  # id of input
+    description: 'Apigee User Password'
+    required: true
+    default: 'none'
+
+outputs:
+  RC: # id of output
+    description: 'The Return Code of Apigeetool command'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.APIGEE_USERNAME }}
+    - ${{ inputs.APIGEE_PASSWORD }}
+    - ${{ inputs.APIGEETOOL_ERROR_STOP }}

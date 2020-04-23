@@ -17,7 +17,7 @@ Apigee User Name - string (**Required**)
 Apigee User Password - string (**Required**)
 
 #### `APIGEETOOL_ERROR_STOP`
-Stop configuration deployment execution if error occured - boolean (**Required**)
+Stop configuration deployment execution if an error occured - true/false (**Required**)
 
 **Notes:** Target Organization and Environment names are read from **.env** file from Github project repository. 
 

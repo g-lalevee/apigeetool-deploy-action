@@ -3,7 +3,8 @@ echo ---------------------------------------------------------------------------
 echo Create Products
 echo ---------------------------------------------------------------------------
 
-cd apigee-config
+cd ./apigee-config
+
 while IFS= read -r line; do 
   productName=$(jq '.productName // empty' <<< "$line");
   productDesc=$(jq '.productDesc // empty' <<< "$line");
@@ -100,3 +101,5 @@ while IFS= read -r line; do
      fi;
   }
 done < <(echo $(cat "${config_file}") | jq -c '.Product[]?') 
+
+cd ..

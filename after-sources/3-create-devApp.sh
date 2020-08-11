@@ -3,7 +3,8 @@ echo ---------------------------------------------------------------------------
 echo Create Developer Applications
 echo ---------------------------------------------------------------------------
 
-cd apigee-config
+cd ./apigee-config
+
 while IFS= read -r line; do 
   apiProducts=$(jq '.apiProducts // empty' <<< "$line");
   callback=$(jq '.callback // empty' <<< "$line");
@@ -76,3 +77,5 @@ while IFS= read -r line; do
   }
 
 done < <(echo $(cat "${config_file}") | jq -c '.Application[]?') 
+
+cd ..

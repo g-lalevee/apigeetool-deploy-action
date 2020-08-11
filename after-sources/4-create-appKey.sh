@@ -3,7 +3,8 @@ echo ---------------------------------------------------------------------------
 echo Create Application Keys 
 echo ---------------------------------------------------------------------------
 
-cd apigee-config
+cd ./apigee-config
+
 while IFS= read -r line; do 
   apiProducts=$(jq '.apiProducts // empty' <<< "$line");
   appName=$(jq '.appName // empty' <<< "$line");
@@ -101,3 +102,5 @@ while IFS= read -r line; do
      fi;
   }
 done < <(echo $(cat "${config_file}") | jq -c '.ApplicationKey[]?') 
+
+cd ..

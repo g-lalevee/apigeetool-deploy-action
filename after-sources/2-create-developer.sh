@@ -3,7 +3,8 @@ echo ---------------------------------------------------------------------------
 echo Create Developers
 echo ---------------------------------------------------------------------------
 
-cd apigee-config
+cd ./apigee-config
+
 while IFS= read -r line; do 
   attributes=$(jq '.attributes // empty | tostring' <<< "$line");
   email=$(jq '.email // empty' <<< "$line");
@@ -85,3 +86,5 @@ while IFS= read -r line; do
      fi;
   }
 done < <(echo $(cat "${config_file}") | jq -c '.Developer[]?') 
+
+cd ..

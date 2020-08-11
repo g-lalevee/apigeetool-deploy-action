@@ -3,7 +3,8 @@ echo ---------------------------------------------------------------------------
 echo Create Target Servers
 echo ---------------------------------------------------------------------------
 
-cd apigee-config
+cd ./apigee-config
+
 while IFS= read -r line; do 
   targetServerName=$(jq -r '.targetServerName' <<< "$line");
   targetHost=$(jq -r '.targetHost' <<< "$line");
@@ -92,3 +93,5 @@ while IFS= read -r line; do
   }
 
 done < <(echo $(cat "${config_file}") | jq -c '.TargetServer[]?')
+
+cd ..

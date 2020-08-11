@@ -3,7 +3,7 @@ echo ---------------------------------------------------------------------------
 echo Create Key Value Maps
 echo ---------------------------------------------------------------------------
 
-cd apigee-config
+cd ./apigee-config
 
 while IFS= read -r line; do 
   mapName=$(jq -r '.mapName // empty' <<< "$line");
@@ -52,4 +52,6 @@ while IFS= read -r line; do
       fi;
   }
 done < <(echo $(cat "${config_file}") | jq -c '.KVM[]?') 
+
+cd ..
 

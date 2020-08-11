@@ -3,7 +3,8 @@ echo ---------------------------------------------------------------------------
 echo Create KVM Entry
 echo ---------------------------------------------------------------------------
 
-cd apigee-config
+cd ./apigee-config
+
 while IFS= read -r line; do 
   mapName=$(jq -r '.mapName // empty' <<< "$line");
   environment=$(jq -r '.environment // empty' <<< "$line");
@@ -74,3 +75,5 @@ while IFS= read -r line; do
       fi;
   }
 done < <(echo $(cat "${config_file}") | jq -c '.KVMentry[]?')
+
+cd ..

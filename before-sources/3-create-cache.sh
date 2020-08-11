@@ -3,7 +3,8 @@ echo ---------------------------------------------------------------------------
 echo Create Cache
 echo ---------------------------------------------------------------------------
 
-cd apigee-config
+cd ./apigee-config
+
 while IFS= read -r line; do 
   cacheName=$(jq -r '.cacheName' <<< "$line");
   environment=$(jq -r '.environment // empty' <<< "$line");
@@ -50,3 +51,4 @@ while IFS= read -r line; do
   }
 done < <(echo $(cat "${config_file}") | jq -c '.Cache[]?') 
 
+cd ..

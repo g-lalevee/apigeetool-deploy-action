@@ -75,10 +75,12 @@ fi;
 #  DEPLOY CONFIGS "BEFORE"
 # ---------------------------
 
+echo ""
 echo START DEPLOYMENT
+echo ""
 
-pwd
-ls -l
+echo "here " $(pwd)
+echo "ca " $(ls)
 
 for f in `ls -v ./before-sources/*.sh` ; do source $f; done
 

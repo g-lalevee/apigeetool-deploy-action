@@ -48,10 +48,14 @@ set +o allexport
 #  TEST CONNEXION
 # ---------------------------
 
+echo ---------------------------------------------------------------------------
 echo Deploying to $APIGEE_ORGANIZATION.
+echo ---------------------------------------------------------------------------
 echo
-echo
+echo ---------------------------------------------------------------------------
 echo Verifying credentials...
+echo ---------------------------------------------------------------------------
+
 
 response=`curl -s -o /dev/null -I -w "%{http_code}" $url/v1/organizations/$APIGEE_ORGANIZATION -u $APIGEE_USERNAME:$APIGEE_PASSWORD`
 
@@ -76,25 +80,22 @@ fi;
 # ---------------------------
 
 echo ""
-echo START DEPLOYMENT
-echo ""
-
-echo "here " $(pwd)
-echo "ca " $(ls)
-echo "home " $(ls /github/home)
-echo "workflow " $(ls /github/workflow)
-echo "root " $(ls /)
+echo ---------------------------------------------------------------------------
+echo Deploy Configuration (before)
+echo ---------------------------------------------------------------------------
 
 for f in `ls -v /before-sources/*.sh` ; do source $f; done
-
 
 # ---------------------------
 #  DEPLOY SHARED FLOWS
 # ---------------------------
 
 echo
+echo ---------------------------------------------------------------------------
 echo Deploying all Shared Flows to $APIGEE_ENV using $APIGEE_USERNAME and $APIGEE_ORGANIZATION
-cd apigee-sharedflows
+echo ---------------------------------------------------------------------------
+
+cd ./apigee-sharedflows
 
 for sharedflowdir in *; do
     if [ -d "${sharedflowdir}" ]; then
@@ -119,8 +120,11 @@ cd ..
 # ---------------------------
 
 echo
+echo ---------------------------------------------------------------------------
 echo Deploying all API Proxies to $APIGEE_ENV using $APIGEE_USERNAME and $APIGEE_ORGANIZATION
-cd apigee-apiproxies
+echo ---------------------------------------------------------------------------
+
+cd ./apigee-apiproxies
 
 for proxydir in *; do
     if [ -d "${proxydir}" ]; then
@@ -144,16 +148,19 @@ cd ..
 #  DEPLOY CONFIGS "AFTER"
 # ---------------------------
 
-echo START DEPLOYMENT
+echo ""
+echo ---------------------------------------------------------------------------
+echo Deploy Configuration (after)
+echo ---------------------------------------------------------------------------
 
 for f in `ls -v /after-sources/*.sh` ; do source $f; done
-
 
 # ---------------------------
 #  END
 # ---------------------------
 
 echo
+echo ---------------------------------------------------------------------------
 echo "Deployment complete. Sample API proxies are deployed to the $APIGEE_ENV environment in the organization $APIGEE_ORGANIZATION"
 echo "Login to enterprise.apigee.com to view and interact with the sample API proxies"
 

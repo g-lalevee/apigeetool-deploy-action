@@ -29,6 +29,10 @@ APIGEE_PASSWORD=$2
 APIGEETOOL_ERROR_STOP=$3
 RC=0
 
+
+cat /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
+
+
 if [ -z $APIGEETOOL_ERROR_STOP ] ; then APIGEETOOL_ERROR_STOP="true"; fi;
 echo "APIGEETOOL_ERROR_STOP = " $APIGEETOOL_ERROR_STOP 
 

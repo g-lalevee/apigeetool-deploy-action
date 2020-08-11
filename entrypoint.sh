@@ -82,7 +82,8 @@ echo ""
 echo "here " $(pwd)
 echo "ca " $(ls)
 echo "home " $(ls /github/home)
-echo "home " $(ls /github/workflow)
+echo "workflow " $(ls /github/workflow)
+echo "root " $(ls /)
 
 for f in `ls -v ./before-sources/*.sh` ; do source $f; done
 

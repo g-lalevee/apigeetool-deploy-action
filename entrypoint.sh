@@ -77,6 +77,9 @@ fi;
 
 echo START DEPLOYMENT
 
+pwd
+ls -l
+
 for f in `ls -v ./before-sources/*.sh` ; do source $f; done
 
 

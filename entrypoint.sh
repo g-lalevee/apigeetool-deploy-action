@@ -81,6 +81,7 @@ echo ""
 
 echo "here " $(pwd)
 echo "ca " $(ls)
+echo "racine " $(ls /)
 
 for f in `ls -v ./before-sources/*.sh` ; do source $f; done
 

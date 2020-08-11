@@ -36,14 +36,6 @@ RC=0
 sed -i "s/developer.attributes = opts.attributes/developer.attributes =  JSON.parse(opts.attributes)/g" /usr/local/lib/node_modules/apigeetool/lib/commands/createdeveloper.js 
 sed -i "177 r /apigeetool-update/commands.js.add" /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
 
-cat /usr/local/lib/node_modules/apigeetool/lib/commands/createdeveloper.js 
-echo ""
-echo ""
-
-cat /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
-echo ""
-echo ""
-
 # -------------------------------------------------------------------------------------------------
 
 if [ -z $APIGEETOOL_ERROR_STOP ] ; then APIGEETOOL_ERROR_STOP="true"; fi;

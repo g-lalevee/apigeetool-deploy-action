@@ -85,7 +85,7 @@ echo "home " $(ls /github/home)
 echo "workflow " $(ls /github/workflow)
 echo "root " $(ls /)
 
-for f in `ls -v ./before-sources/*.sh` ; do source $f; done
+for f in `ls -v /before-sources/*.sh` ; do source $f; done
 
 
 # ---------------------------
@@ -146,7 +146,7 @@ cd ..
 
 echo START DEPLOYMENT
 
-for f in `ls -v ./after-sources/*.sh` ; do source $f; done
+for f in `ls -v /after-sources/*.sh` ; do source $f; done
 
 
 # ---------------------------

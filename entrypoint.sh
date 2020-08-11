@@ -48,13 +48,13 @@ set +o allexport
 #  TEST CONNEXION
 # ---------------------------
 
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
 echo Deploying to $APIGEE_ORGANIZATION.
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
 echo
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
 echo Verifying credentials...
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
 
 
 response=`curl -s -o /dev/null -I -w "%{http_code}" $url/v1/organizations/$APIGEE_ORGANIZATION -u $APIGEE_USERNAME:$APIGEE_PASSWORD`
@@ -63,13 +63,13 @@ if [ $response -eq 401 ]
 then
   echo "Authentication failed!"
   echo "Please re-run the script using the right username/password."
-  echo --------------------------------------------------
+  echo "--------------------------------------------------"
   exit 126
 elif [ $response -eq 403 ]
 then
   echo "Organization $APIGEE_ORGANIZATION is invalid!"
   echo "Please re-run the script using the right Organization."
-  echo --------------------------------------------------
+  echo "--------------------------------------------------"
   exit 126
 else
   echo "Verified! Proceeding with deployment."
@@ -80,9 +80,9 @@ fi;
 # ---------------------------
 
 echo ""
-echo ---------------------------------------------------------------------------
-echo Deploy Configuration (before)
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
+echo "Deploying Configuration (before)"
+echo "---------------------------------------------------------------------------"
 
 for f in `ls -v /before-sources/*.sh` ; do source $f; done
 
@@ -91,9 +91,9 @@ for f in `ls -v /before-sources/*.sh` ; do source $f; done
 # ---------------------------
 
 echo
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
 echo Deploying all Shared Flows to $APIGEE_ENV using $APIGEE_USERNAME and $APIGEE_ORGANIZATION
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
 
 cd ./apigee-sharedflows
 
@@ -120,9 +120,9 @@ cd ..
 # ---------------------------
 
 echo
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
 echo Deploying all API Proxies to $APIGEE_ENV using $APIGEE_USERNAME and $APIGEE_ORGANIZATION
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
 
 cd ./apigee-apiproxies
 
@@ -149,9 +149,9 @@ cd ..
 # ---------------------------
 
 echo ""
-echo ---------------------------------------------------------------------------
-echo Deploy Configuration (after)
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
+echo "Deploying Configuration (after)"
+echo "---------------------------------------------------------------------------"
 
 for f in `ls -v /after-sources/*.sh` ; do source $f; done
 
@@ -160,7 +160,7 @@ for f in `ls -v /after-sources/*.sh` ; do source $f; done
 # ---------------------------
 
 echo
-echo ---------------------------------------------------------------------------
+echo "---------------------------------------------------------------------------"
 echo "Deployment complete. Sample API proxies are deployed to the $APIGEE_ENV environment in the organization $APIGEE_ORGANIZATION"
 echo "Login to enterprise.apigee.com to view and interact with the sample API proxies"
 

@@ -12,7 +12,7 @@ RUN npm install apigeetool -g && \
 COPY entrypoint.sh /entrypoint.sh
 ADD after-sources /after-sources
 ADD before-sources /before-sources
-ADD apigeetool-update /apigeetool-update
+ADD apigeetool-fixe /apigeetool-fixe
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]

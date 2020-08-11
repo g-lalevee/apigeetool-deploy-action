@@ -8,15 +8,11 @@ RUN npm install apigeetool -g && \
     apk add jq && \ 
     apk add --update curl 
 
-RUN sed -i "s/developer.attributes = opts.attributes/developer.attributes =  JSON.parse(opts.attributes)/g" /usr/local/lib/node_modules/apigeetool/lib/commands/createdeveloper.js 
-
-RUN sed -i "177 r apigeetool-update/commands.js.add" /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
-
-   
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 ADD after-sources /after-sources
 ADD before-sources /before-sources
+ADD apigeetool-update /apigeetool-update
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]

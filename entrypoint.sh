@@ -29,9 +29,16 @@ APIGEE_PASSWORD=$2
 APIGEETOOL_ERROR_STOP=$3
 RC=0
 
+# ---------------------------------------------------------------------
+# Fixe Apigeetool issues
+# ---------------------------------------------------------------------
+
+sed -i "s/developer.attributes = opts.attributes/developer.attributes =  JSON.parse(opts.attributes)/g" /usr/local/lib/node_modules/apigeetool/lib/commands/createdeveloper.js 
+sed -i "177 r apigeetool-update/commands.js.add" /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
 
 cat /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
 
+# -------------------------------------------------------------------------------------------------
 
 if [ -z $APIGEETOOL_ERROR_STOP ] ; then APIGEETOOL_ERROR_STOP="true"; fi;
 echo "APIGEETOOL_ERROR_STOP = " $APIGEETOOL_ERROR_STOP 

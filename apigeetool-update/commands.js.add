@@ -1,0 +1,8 @@
+
+createAppKey: {
+  description: 'Create a new App Key',
+  load: function(){
+    return require('./createappkey.js');
+  }
+},
+

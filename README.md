@@ -39,7 +39,7 @@ The Return Code of action
     jobs:
         - name: Deployment
             id: deployment
-            uses: g-lalevee/apigeetool-deployment-action@v4.3
+            uses: g-lalevee/apigeetool-deployment-action@master
             with:
                 APIGEE_USERNAME: ${{ secrets.APIGEE_ID }}
                 APIGEE_PASSWORD: ${{ secrets.APIGEE_PWD }}  

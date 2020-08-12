@@ -34,7 +34,7 @@ RC=0
 # ---------------------------------------------------------------------
 
 sed -i "s/developer.attributes = opts.attributes/developer.attributes =  JSON.parse(opts.attributes)/g" /usr/local/lib/node_modules/apigeetool/lib/commands/createdeveloper.js 
-sed -i "177 r /apigeetool-fixe/commands.js.add" /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
+sed -i "177 r apigeetool-fixe/commands.js.add" /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
 
 # -------------------------------------------------------------------------------------------------
 

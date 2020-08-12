@@ -38,7 +38,14 @@ echo Fixing Apigeetool 0.14.2 issues
 echo "---------------------------------------------------------------------------"
 
 sed -i "s/developer.attributes = opts.attributes/developer.attributes =  JSON.parse(opts.attributes)/g" /usr/local/lib/node_modules/apigeetool/lib/commands/createdeveloper.js 
-sed -i "177 r apigeetool-fixe/commands.js.add" /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
+echo /usr/local/lib/node_modules/apigeetool/lib/commands/createdeveloper.js fixed
+cat /usr/local/lib/node_modules/apigeetool/lib/commands/createdeveloper.js 
+echo ""
+
+sed -i "177 r /apigeetool-fixe/commands.js.add" /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
+echo /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js fixed
+cat /usr/local/lib/node_modules/apigeetool/lib/commands/commands.js
+echo ""
 
 # -------------------------------------------------------------------------------------------------
 
